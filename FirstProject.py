@@ -44,7 +44,7 @@ def add_tasks(first_name, tasks_to_do):
 
 
 def show_tasks(tasks_to_do, crossed_off):
-    if not tasks_to_do:
+    if not tasks_to_do and not crossed_off :
         print("You have to have a task to do first!")
             
     else:
@@ -52,16 +52,15 @@ def show_tasks(tasks_to_do, crossed_off):
 
         for task in tasks_to_do:
             for actual_task, priority in task.items():
-                print(actual_task + " - " + priority)
+                print(actual_task, " - ", priority)
         
         for task in crossed_off:
             print(f"{task} = completed")
 
 
 def cross_off_tasks(tasks_to_do, crossed_off):
-    for task in tasks_to_do:
-        for number, actual_task in enumerate(task, start= 1):
-            print(number, actual_task)
+    for number in enumerate(tasks_to_do, start= 1):
+        print(number)
     try:
         cross_off = int(input("Which one would you like to cross off? "))
         if cross_off <= 0:
@@ -85,7 +84,7 @@ def main():
     else:
         print(f"\nOk, {first_name.title()}, it is nice to meet you.\n")
     while True:
-        if not tasks_to_do:
+        if not tasks_to_do and not crossed_off:
             try:
                 print("Choose '1' to store some tasks or '9' to quit")
                 ask_for_choice = int(input("\nWhat would you like to do? "))
