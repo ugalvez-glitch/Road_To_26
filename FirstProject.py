@@ -1,6 +1,6 @@
 ##This is a to-do list started on Thursday, May 28th, 2026
 ##Lists
-tasks_to_do_dictionary = {}
+task_dictionary = {}
 tasks_to_do = []
 crossed_off = []
 ## Methods 
@@ -24,19 +24,20 @@ def add_tasks(first_name, tasks_to_do):
     while task_number:
         try:
             print("---------")
-            task_to_add = input("What task do you have to add? \n")
-            task_priority = int(input("What priority does this task have for you? (1 = high, 2 = medium, 3 = low)"))
+            task_name = input("What task do you have to add? ")
+            task_dictionary["task"] = task_name
+            task_priority = int(input("What is the priority of this task? (1 = high, 2 = medium, 3 = low) "))
             if task_priority == 1:
-                tasks_to_do_dictionary[task_to_add] = "high priority"
+                task_dictionary["priority"] = "high priority"
                 task_number -= 1
-                tasks_to_do.append(tasks_to_do_dictionary)
+                tasks_to_do.append(task_dictionary)
             elif task_priority == 2:
-                tasks_to_do_dictionary[task_to_add] = "medium priority"
+                task_dictionary["priority"] = "medium priority"
                 task_number -=1
-                tasks_to_do.append(tasks_to_do_dictionary)
+                tasks_to_do.append(task_dictionary)
             elif task_priority == 3:
-                tasks_to_do_dictionary[task_to_add] = "low priority "
-                tasks_to_do.append(tasks_to_do_dictionary)
+                task_dictionary["priority"] = "low priority "
+                tasks_to_do.append(task_dictionary)
                 task_number -= 1
         except ValueError:
             print("It must be a number! ")
