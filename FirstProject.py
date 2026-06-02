@@ -1,6 +1,5 @@
 ##This is a to-do list started on Thursday, May 28th, 2026
 ##Lists
-task_dictionary = {}
 tasks_to_do = []
 crossed_off = []
 ## Methods 
@@ -16,39 +15,23 @@ def add_tasks(first_name, tasks_to_do):
                 print("It must be more than 0. ")
             else:
                 print("Ok, let's store the task(s) in a list. \n")
-                break
         except ValueError:
             print("It must be a number!\n")
             continue
-
-    while task_number:
-        try:
-            print("---------")
-            task_name = input("What task do you have to add? ")
-            task_dictionary["task"] = task_name
-            task_priority = int(input("What is the priority of this task? (1 = high, 2 = medium, 3 = low) "))
-            if task_priority == 1:
-                task_dictionary["priority"] = "high priority"
-                task_number -= 1
-            elif task_priority == 2:
-                task_dictionary["priority"] = "medium priority"
-                task_number -=1
-            elif task_priority == 3:
-                task_dictionary["priority"] = "low priority "
-                task_number -= 1
-        except ValueError:
-            print("It must be a number! ")
-
+        for task in range(task_number):
+            task = input("What is the task?")
+            tasks_to_do.append(task)
+        break
 
 def show_tasks(tasks_to_do, crossed_off):
-    if not task_dictionary and not crossed_off :
+    if not tasks_to_do and not crossed_off :
         print("You have to have a task to do first!")
             
     else:
         print("Ok, here are the tasks shown.")
 
-        for task, priority in task_dictionary.items():
-            print(task," - ", priority)
+        for task in enumerate(tasks_to_do, start=1):
+            print(task)
 
         
         for task in crossed_off:
@@ -56,7 +39,7 @@ def show_tasks(tasks_to_do, crossed_off):
 
 
 def cross_off_tasks(tasks_to_do, crossed_off):
-    for number in enumerate(task_dictionary, start= 1):
+    for number in enumerate(tasks_to_do, start= 1):
         print(number)
     try:
         cross_off = int(input("Which one would you like to cross off? "))
@@ -81,7 +64,7 @@ def main():
     else:
         print(f"\nOk, {first_name.title()}, it is nice to meet you.\n")
     while True:
-        if not task_dictionary and not crossed_off:
+        if not tasks_to_do and not crossed_off:
             try:
                 print("Choose '1' to store some tasks or '9' to quit")
                 ask_for_choice = int(input("\nWhat would you like to do? "))
